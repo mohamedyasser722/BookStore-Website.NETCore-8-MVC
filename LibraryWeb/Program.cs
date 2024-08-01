@@ -1,3 +1,6 @@
+using LibraryWeb.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace LibraryWeb
 {
     public class Program
@@ -8,6 +11,22 @@ namespace LibraryWeb
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Configure the connection to the database
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(connectionString));
+
+
+
+
+
+
+
+
+
+
+
 
             var app = builder.Build();
 
