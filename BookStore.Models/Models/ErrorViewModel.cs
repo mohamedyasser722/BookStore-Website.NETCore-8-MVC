@@ -1,4 +1,4 @@
-﻿namespace LibraryWeb.Models
+﻿namespace BookStroreWeb.Models
 {
     public class ErrorViewModel
     {

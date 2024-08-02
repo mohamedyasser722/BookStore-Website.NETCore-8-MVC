@@ -1,7 +1,9 @@
-using LibraryWeb.Data;
+using BookStore.DataAccess.Data;
+using BookStore.DataAccess.Repository;
+using BookStore.DataAccess.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
-namespace LibraryWeb
+namespace BookStroreWeb
 {
     public class Program
     {
@@ -18,14 +20,8 @@ namespace LibraryWeb
                 options.UseSqlServer(connectionString));
 
 
-
-
-
-
-
-
-
-
+            // allow DI for CategoryRepository
+            builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 
 
             var app = builder.Build();
@@ -47,7 +43,7 @@ namespace LibraryWeb
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }
